@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <style>
+            html {
+              height: 100vh;
+            }
+            body {
+              min-height: 100%;
+            }
+            dialog {
+              position: static;
+            }
+            .parent {
+              display: flex;
+            }
+            .child {
+              margin: auto;}
+            div {
+                font-size: 24px;
+            }
+        </style>
+    {% block style %}
+    {% endblock %}
+</head>
+
+<body class="parent">
+    <div class="child">
+        <br>
+        <a href="{% url 'base' %}">Главная</a>
+        <br>
+        {% block content %}
+            <br>
+            <a href="{% url 'smart_app:sandbox_index' %}">Приложение "SmartPhons"</a>
+
+        {% endblock %}
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{%  extends 'base.html' %}
+{% block content %}
+    {{ title }}
+    <br>
+    <p>Hello!</p>
+    {% for smart in smarts %}
+        <a href="{% url 'smart_app:smart_details' smart_slug=smart.slug %}">{{ smart.name }}</a><br>
+    {% endfor %}
+
+{% endblock %}
