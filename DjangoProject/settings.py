@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'sandbox3todo',
     'sandbox4ftp',
     'sandbox5blog',
+    'marathon.apps.MarathonConfig',
 ]
 
 MIDDLEWARE = [
