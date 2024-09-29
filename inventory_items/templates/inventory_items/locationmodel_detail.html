@@ -1,0 +1,49 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block style %}
+    .h3-log, .h4-loc {
+        text-align: center
+    }
+{% endblock style %}
+
+{% block title %}
+    Добавление локации
+{% endblock title %}
+
+
+{% block content %}
+    <h3 class="h3-log">Добавлена локация</h3>
+    <h4 class="h4-loc">(Место хранения)</h4>
+    <div>
+        ID: {{ object.id }} - {{ object.name }}
+    </div>
+    <div>
+        <p>
+            <a href="#">
+                Исправить локацию
+            </a>
+        </p>
+        <p>
+            <a href="#">
+                Удалить локацию
+            </a>
+        </p>
+        <p>
+            <a href="#" onclick="history.back();return false;">
+                Добавить ещё локацию ->
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:index' %}">
+                К основному меню --->
+            </a>
+        </p>
+        <p>
+            <h4>Содержимое локации</h4>
+            {% for item in items %}
+                <a href="{% url 'inventory:item-details' pk=item.id %}">{{ item }}</a>
+                <br>
+            {% endfor %}
+        </p>
+    </div>
+{% endblock content %}

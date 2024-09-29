@@ -1,0 +1,41 @@
+ html {
+    height: 100vh;
+
+}
+
+body {
+    min-height: 100%;
+}
+
+dialog {
+    position: static;
+}
+
+.parent {
+    display: flex;
+}
+
+.child {
+    margin: auto;
+    min-height: calc(100vh - 50px);
+}
+
+div {
+    font-size: 30px;
+}
+
+.gray-box {
+    background-color: lightgray;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.picture {
+        width: 450px;
+    }

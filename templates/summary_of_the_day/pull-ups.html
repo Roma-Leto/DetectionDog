@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    {{ title }}
+    <form action="" method="post">
+        {% csrf_token %}
+{#        {{ form.as_div }}#}
+        <div class="row-form-errors">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+            <p>
+                <label class="form-label" for="{{ f.id_for_label }}">
+                    {{ f.label }}
+                </label>
+                {{ f }}
+            </p>
+            <div class="row-form-errors">
+                {{ f.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit">Сохранить</button>
+    </form>
+    {% for l in log %}
+        <br>{{ l.data }} - {{ l.number_of_approaches }} подход {{ l.count }} раз(а)
+    {% endfor %}
+    <p><a href="#">...</a></p>
+    <p><a href="#">...</a></p>
+    <p><a href="#">...</a></p>
+    <p><a href="{% url 'summary_of_the_day:summary_of_the_day_index' %}">Назад</a></p>
+    <p><a href="#">На главную</a></p>
+{% endblock %}

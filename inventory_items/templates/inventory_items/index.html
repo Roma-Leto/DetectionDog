@@ -1,0 +1,74 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block title %}
+    InventoryApp
+{% endblock title %}
+
+
+{% block content %}
+    <div>
+{#        <p class="text-right">#}
+{#            <a href="#">#}
+{#                Поиск#}
+{#            </a>#}
+{#        </p>#}
+        <form class="text-right" action="{% url 'inventory:search_results' %}" method="get">
+          <input name="item" type="text" placeholder="Поиск...">
+        </form>
+        <div class="aliceblue">
+            <p>
+                <a href="{% url 'inventory:item-create' %}">
+                    <b>Добавить предмет</b>
+                </a>
+            </p>
+            <p>
+                <a href="{% url 'inventory:item-list' %}">
+                    Список предметов
+                </a>
+            </p>
+        </div>
+        <p>
+            <a href="{% url 'inventory:category-create' %}">
+                Создание категорий вещей
+            </a>
+        </p><p>
+            <a href="{% url 'inventory:category-list' %}">
+                Список категорий
+            </a>
+        </p>
+        <div class="aliceblue">
+        <p>
+            <a href="{% url 'inventory:location-create' %}">
+                Создание мест хранения
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:location-list' %}">
+                Список мест хранения
+            </a>
+        </p>
+        </div>
+        <p>
+            <a href="{% url 'inventory:box-create' %}">
+                Создание упаковки хранения
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:box-list' %}">
+                Список упаковок для хранения
+            </a>
+        </p>
+        <div class="aliceblue">
+        <p>
+            <a href="{% url 'inventory:material-create' %}">
+                Создание материала box'a
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:material-list' %}">
+                Список материалов box'ов
+            </a>
+        </p>
+        </div>
+    </div>
+{% endblock content %}

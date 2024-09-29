@@ -1,0 +1,43 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block style %}
+    .h3-log, .h4-loc {
+        text-align: center
+    }
+{% endblock style %}
+
+{% block title %}
+    Добавление локации
+{% endblock title %}
+
+
+{% block content %}
+    <h3 class="h3-log">Добавлен материал упаковки</h3>
+    <div>
+        ID: {{ object.id }} - {{ object.name }}
+        <br>
+        Влагозащита: {{ object.moisture_protection }}
+    </div>
+    <div>
+        <p>
+            <a href="#">
+                Исправить локацию
+            </a>
+        </p>
+        <p>
+            <a href="#">
+                Удалить локацию
+            </a>
+        </p>
+        <p>
+            <a href="#" onclick="history.back();return false;">
+                Добавить ещё локацию ->
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:index' %}">
+                К основному меню --->
+            </a>
+        </p>
+    </div>
+{% endblock content %}

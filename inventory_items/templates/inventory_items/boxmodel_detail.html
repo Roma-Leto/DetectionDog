@@ -1,0 +1,85 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block style %}
+    .h3-log, .h4-loc {
+        text-align: center
+    }
+    .picture {
+        width: 450px;
+    }
+{% endblock style %}
+
+
+{% block title %}
+
+{% endblock title %}
+
+
+{% block content %}
+    <h3>Добавлена упаковка</h3>
+    <div>
+        <p>
+            ID: {{ object.id }}
+            {{ object.number }}
+        </p>
+        <p>
+            {% if object.photo.url is not None %}
+                <img alt="Фото"
+                    class="picture"
+                    src="{{ object.photo.url }}">
+            {% else %}
+                НЕТ ФОТО
+            {% endif %}
+        </p>
+        <p>
+            Высота: {{ object.height }}
+        </p>
+        <p>
+            Ширина: {{ object.width }}
+        </p>
+        <p>
+            Глубина: {{ object.depth }}
+        </p>
+        <p>
+            {% if object.material %}
+                Материал: {{ object.material }}
+            {% else %}
+                Материал <u>не указан</u>.
+            {% endif %}
+        </p>
+        <p>
+            Описание: {{ object.details }}
+        </p>
+    </div>
+    <div>
+        <p>
+            <a href="{% url 'inventory:box-update-form' pk=object.id %}">
+                Исправить упаковку
+            </a>
+        </p>
+        <p>
+            <a href="#">
+                Удалить упаковку
+            </a>
+        </p>
+        <p>
+            <a href="#" onclick="history.back();return false;">
+                Добавить ещё упаковку ->
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:index' %}">
+                К основному меню --->
+            </a>
+        </p>
+        <p>
+            <h4>Содержимое упаковки (box'a)</h4>
+            {% for item in items %}
+                <a href="{% url 'inventory:item-details' pk=item.id %}">
+                    {{ item }}
+                </a>
+                <br>
+            {% endfor %}
+        </p>
+    </div>
+{% endblock content %}

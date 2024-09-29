@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'css/standart_style.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'css/mobile_style.css' %}"
+          media="(max-width: 480px)">
+    <meta name="viewport" content="width=480px, user-scalable=yes">
+    <style>
+            {% block style %}
+            {% endblock style %}
+    </style>
+</head>
+
+<body class="parent">
+    <div class="child">
+        <p class="text-right">
+        <a href="{% url 'inventory:index' %}">Главная</a>
+        </p>
+        {% block content %}
+            <br>
+            <a href="{% url 'smart_app:sandbox_index' %}">Приложение "SmartPhons"</a>
+            <br>
+            <a href="{% url 'summary_of_the_day:summary_of_the_day_index' %}">Приложение "SummaryOfTheDay"</a>
+            <br>
+            <a href="{% url 'inventory:category-create' %}">Приложение "Inventory"</a>
+        {% endblock %}
+
+    </div>
+</body>
+
+</html>

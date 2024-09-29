@@ -1,0 +1,29 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block style %}
+
+{% endblock style %}
+
+
+{% block title %}
+    Список вещей
+{% endblock title %}
+
+
+{% block content %}
+    Всего {{ object_list.count }} предмета в БД
+    {% for item in object_list %}
+        <p>
+            {{ item.id }}
+            <a href="{% url 'inventory:item-details' pk=item.id %}">
+                {% if item.name %}
+                    {{ item.name }}
+                {% elif item.number %}
+                    {{ item.number }}
+                {% else %}
+                    НЕТ ДАННЫХ
+                {% endif %}
+            </a>
+        </p>
+    {% endfor %}
+{% endblock content %}

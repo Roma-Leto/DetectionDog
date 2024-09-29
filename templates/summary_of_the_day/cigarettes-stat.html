@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    {{ title }}
+    {% for st in stat %}
+        <p>
+        {{ st.data }} - {{ st.count }} шт.
+            <a href="#">Изменить</a>
+            <a href="#">Удалить</a>
+        </p>
+    {% endfor %}
+
+    <p>
+        <a href="{%  url 'summary_of_the_day:summary_of_the_day_cigarettes' %}">
+            Назад
+        </a>
+    </p>
+    <p>
+        <a href="{% url 'summary_of_the_day:summary_of_the_day_index' %}">
+            На главную
+        </a>
+    </p>
+{% endblock %}

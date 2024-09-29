@@ -1,0 +1,20 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block style %}
+
+{% endblock style %}
+
+
+{% block title %}
+    Список категорий
+{% endblock title %}
+
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <p>Действительно хотите удалить {{ object }}</p>
+        {{ form }}
+        <input type="submit" value="Confirm">
+    </form>
+{% endblock content %}

@@ -1,0 +1,79 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block style %}
+    .h3-log, .h4-loc {
+        text-align: center
+    }
+    .picture {
+        width: 450px;
+    }
+{% endblock style %}
+
+
+{% block title %}
+    Информация о предмете
+{% endblock title %}
+
+
+{% block content %}
+    <h3 class="h3-log">Добавлен материал упаковки</h3>
+    <div>
+        ID: {{ object.id }} - {{ object.name }}
+        <br>
+        <p style="width: 480px">
+            Описание: {{ object.details }}
+        </p>
+        <p>
+            Количество: {{ object.count }}
+        </p>
+        <p>
+            {% if object.photo.url is not None %}
+                <img alt="Фото"
+                    class="picture"
+                    src="{{ object.photo.url }}">
+            {% else %}
+                НЕТ ФОТО
+            {% endif %}
+        </p>
+        <p>
+            Категория: {{ object.categories }}
+        </p>
+        <p>
+            Время добавления: {{ object.date_create }}
+        </p>
+        <p>
+            Место (локация): {{ object.location }}
+        </p>
+        <p>
+            Упаковка: <a href="{% url 'inventory:box-details' pk=object.box.id %}">
+            {{ object.box }}
+            </a>
+        </p>
+        <p>
+            Статус: {{ object.get_status_display }}
+        </p>
+    </div>
+    <div>
+        <p>
+            <a href="{% url 'inventory:itemmodel-update-form' pk=object.id %}">
+                Исправить информацию о предмете
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:item-confirm-delete' pk=object.id %}">
+                Удалить предмет
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:item-create' %}">
+                Добавить предмет ->
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:index' %}">
+                К основному меню --->
+            </a>
+        </p>
+
+    </div>
+{% endblock content %}

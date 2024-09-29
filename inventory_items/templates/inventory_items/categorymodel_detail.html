@@ -1,0 +1,50 @@
+{% extends 'inventory_items/base.html' %}
+
+
+{% block title %}
+
+{% endblock title %}
+
+
+{% block content %}
+    <h3>Категория</h3>
+    <div>
+        ID: {{ object.id }}
+        {{ object.name }}
+    </div>
+    <div>
+        <p>
+            <a href="{% url 'inventory:category_update_form' pk=object.id %}">
+                Исправить категорию
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:category_confirm_delete' pk=object.id %}">
+                Удалить категорию
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:category-create' %}">
+                Добавить ещё категорию ->
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:index' %}">
+                К основному меню --->
+            </a>
+        </p>
+        <p>
+            <h4>Данную категорию имеет:</h4>
+            <ol>
+                {% for item in items %}
+                    <li>
+                        <a href="{% url 'inventory:item-details' pk=item.id %}">
+                            {{ item }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ol>
+
+        </p>
+    </div>
+{% endblock content %}

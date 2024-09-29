@@ -1,0 +1,30 @@
+ html {
+  height: 100vh;
+}
+
+body {
+  min-height: 100%;
+}
+
+dialog {
+  position: static;
+}
+
+.parent {
+  display: flex;
+}
+
+.child {
+  margin: auto;
+}
+
+div {
+    font-size: 24px;
+}
+.aliceblue {
+    background-color: aliceblue;
+}
+
+.text-center{
+    text-align: center;
+}

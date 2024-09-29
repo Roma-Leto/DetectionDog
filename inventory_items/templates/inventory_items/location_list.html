@@ -1,0 +1,27 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block style %}
+
+{% endblock style %}
+
+
+{% block title %}
+    Список категорий
+{% endblock title %}
+
+
+{% block content %}
+    {% for cat in object_list %}
+        <p>
+            <a href="{% url 'inventory:location-details' pk=cat.id %}">
+                {% if cat.name %}
+                    {{ cat.name }}
+                {% elif cat.number %}
+                    {{ cat.number }}
+                {% else %}
+                    НЕТ ДАННЫХ
+                {% endif %}
+            </a>
+        </p>
+    {% endfor %}
+{% endblock content %}
