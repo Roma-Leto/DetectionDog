@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}{{ title }}{% endblock %}</title>
     <link rel="stylesheet" type="text/css"
-          href="{% static 'css/standart_style.css' %}">
+          href="{% static 'css/standard_style.css' %}">
     <link rel="stylesheet" type="text/css"
           href="{% static 'css/mobile_style.css' %}"
           media="(max-width: 480px)">
@@ -25,7 +25,7 @@
         </p>
         {% block content %}
             <br>
-            <a href="{% url 'smart_app:sandbox_index' %}">Приложение "SmartPhons"</a>
+            <a href="{% url 'smart_app:sandbox_index' %}">Приложение "SmartPhones"</a>
             <br>
             <a href="{% url 'summary_of_the_day:summary_of_the_day_index' %}">Приложение "SummaryOfTheDay"</a>
             <br>

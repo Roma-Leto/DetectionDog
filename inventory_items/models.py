@@ -14,6 +14,14 @@ class LocationModel(models.Model):
     def get_absolute_url(self):
         return reverse('inventory:location-details', kwargs={'pk': self.id})
 
+    @classmethod
+    def get_default_location(cls):
+        return LocationModel.objects.first()
+
+    @classmethod
+    def get_last_location_item(cls):
+        return ItemModel.objects.first().location
+
     def __str__(self):
         return self.name
 
@@ -72,6 +80,10 @@ class BoxModel(models.Model):
     def get_default_box(cls):
         return BoxModel.objects.first()
 
+    @classmethod
+    def get_last_box_item(cls):
+        return ItemModel.objects.first().box
+
 
 # endregion
 
@@ -119,7 +131,7 @@ class ItemModel(models.Model):
                               blank=True,
                               upload_to='uploads/%Y/%m/%d',
                               null=True,
-                              default=None)
+                              default='uploads/default_item_image.png')
     details = models.TextField(verbose_name="Описание предмета")
     date_create = models.DateTimeField(verbose_name="Время добавления",
                                        auto_now_add=True)
@@ -150,24 +162,29 @@ class ItemModel(models.Model):
                             verbose_name="Упаковка",
                             blank=True,
                             null=True,
-                            default=BoxModel.get_default_box
-                            )
+                            default=BoxModel.get_last_box_item)
 
     location = models.ForeignKey(LocationModel,
                                  verbose_name="Место/локация",
                                  on_delete=models.PROTECT,
                                  blank=True,
-                                 null=True)
+                                 null=True,
+                                 default=LocationModel.get_last_location_item)
 
     def get_absolute_url(self):
         return reverse('inventory:item-details', kwargs={"pk": self.pk})
+
+    @classmethod
+    def get_last_item(cls):
+        last_item = ItemModel.objects.last()
+        print(last_item)
+        return last_item
 
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['-id']
-
 
 # endregion
 
