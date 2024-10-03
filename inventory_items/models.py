@@ -82,6 +82,9 @@ class BoxModel(models.Model):
 
     @classmethod
     def get_last_box_item(cls):
+        """
+            Возвращает последний бокс в записи предмета
+        """
         return ItemModel.objects.first().box
 
 
