@@ -2,10 +2,10 @@
 
 {% block style %}
     .h3-log, .h4-loc {
-        text-align: center
+    text-align: center
     }
     .picture {
-        width: 450px;
+    width: 450px;
     }
 {% endblock style %}
 
@@ -29,8 +29,8 @@
         <p>
             {% if object.photo.url is not None %}
                 <img alt="Фото"
-                    class="picture"
-                    src="{{ object.photo.url }}">
+                     class="picture"
+                     src="{{ object.photo.url }}">
             {% else %}
                 НЕТ ФОТО
             {% endif %}
@@ -52,7 +52,8 @@
             {% if object.box.location is None %}
                 Упаковка: Без упаковки
             {% else %}
-                Упаковка: <a href="{% url 'inventory:box-details' pk=object.box.id %}">
+                Упаковка:
+                <a href="{% url 'inventory:box-details' pk=object.box.id %}">
                 {{ object.box }}
             {% endif %}
 

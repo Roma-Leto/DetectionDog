@@ -27,7 +27,7 @@
         </p>
     {% endfor %}
 
-{#    <-- Pagination -->             #}
+    {#    <-- Pagination -->             #}
     <div class="pagination">
         {% if page_obj.has_previous %}
             <a href="?page=1">Начало списка</a>
@@ -44,7 +44,8 @@
 
         {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
-            <a href="?page={{ paginator.page_range.stop|add:-1 }}">Конец списка</a>
+            <a href="?page={{ paginator.page_range.stop|add:-1 }}">Конец
+                списка</a>
         {% endif %}
     </div>
 
