@@ -7,6 +7,8 @@ from django.views.generic.base import ContextMixin
 
 from inventory_items.models import *
 
+pagination_var = 9
+
 
 # region Create & Details
 class IndexView(TemplateView):
@@ -42,6 +44,9 @@ class LocationDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['items'] = ItemModel.objects.filter(
+            location_id=context['object'].id
+        )
+        context['box'] = BoxModel.objects.filter(
             location_id=context['object'].id
         )
         return context
@@ -89,26 +94,36 @@ class ItemDetailView(DetailView):
 class CategoryListView(ListView):
     model = CategoryModel
     template_name = 'inventory_items/category_list.html'
+    paginate_by = pagination_var
 
 
 class LocationListView(ListView):
     model = LocationModel
     template_name = 'inventory_items/location_list.html'
+    paginate_by = pagination_var
 
 
 class BoxListView(ListView):
     model = BoxModel
     template_name = 'inventory_items/box_list.html'
+    paginate_by = pagination_var
 
 
 class MaterialListView(ListView):
     model = MaterialBoxModel
     template_name = 'inventory_items/material_list.html'
+    paginate_by = pagination_var
 
 
 class ItemListView(ListView):
     model = ItemModel
     template_name = 'inventory_items/item_list.html'
+    paginate_by = pagination_var
+
+    def get_context_data(self, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['count_objects'] = ItemModel.objects.count()
+        return context
 
 
 # endregion
@@ -138,6 +153,7 @@ class ItemUpdateView(UpdateView):
     fields = '__all__'
     template_name_suffix = "_update_form"
 
+
 class BoxUpdateView(UpdateView):
     model = BoxModel
     fields = '__all__'
@@ -157,7 +173,7 @@ class SearchResultsView(ListView):
             Q(name__icontains=query)
             | Q(details__icontains=query)
             | Q(name__istartswith=query)
-        ).l
+        )
 
         return object_list
 

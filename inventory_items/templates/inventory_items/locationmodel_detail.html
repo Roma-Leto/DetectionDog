@@ -41,9 +41,17 @@
         <p>
             <h4>Содержимое локации</h4>
             {% for item in items %}
-                <a href="{% url 'inventory:item-details' pk=item.id %}">{{ item }}</a>
+                item: <a href="{% url 'inventory:item-details' pk=item.id %}">{{ item }}</a>
                 <br>
             {% endfor %}
+            {% for box in box %}
+                box: <a href="{% url 'inventory:box-details' pk=box.id %}">{{ box }}</a>
+                <br>
+            {% endfor %}
+{#            {% for item in inbox  %}#}
+{#                inbox: <a href="{% url 'inventory:item-details' pk=item.id %}">{{ item }}</a>#}
+{#                <br>#}
+{#            {% endfor %}#}
         </p>
     </div>
 {% endblock content %}

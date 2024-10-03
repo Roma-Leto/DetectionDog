@@ -11,9 +11,11 @@
 
 
 {% block content %}
+    <div style="max-width: 100%; overflow: hidden; width: 450px">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_ul }}
         <input type="submit" value="Обновить данные">
     </form>
+    </div>
 {% endblock content %}

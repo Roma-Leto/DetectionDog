@@ -6,6 +6,8 @@ app_name = 'inventory'
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
+
+    # region category
     path('category-create/',
          CategoryCreateView.as_view(),
          name='category-create'),
@@ -21,6 +23,8 @@ urlpatterns = [
     path('category_update_form/<int:pk>/',
          CategoryUpdateView.as_view(),
          name='category_update_form'),
+    # endregion
+    # region location
     path('location-create/',
          LocationCreateView.as_view(),
          name='location-create'),
@@ -30,6 +34,8 @@ urlpatterns = [
     path('location-detail/<int:pk>/',
          LocationDetailView.as_view(),
          name='location-details'),
+    # endregion
+    # region box
     path('box-create/',
          BoxCreateView.as_view(),
          name='box-create'),
@@ -42,6 +48,8 @@ urlpatterns = [
     path('box-detail/<int:pk>/',
          BoxDetailView.as_view(),
          name='box-details'),
+    # endregion
+    # region material
     path('material-create/',
          MaterialCreateView.as_view(),
          name='material-create'),
@@ -51,6 +59,8 @@ urlpatterns = [
     path('material-detail/<int:pk>/',
          MaterialDetailView.as_view(),
          name='material-details'),
+    # endregion
+    # region item
     path('item-create/',
          ItemCreateView.as_view(),
          name='item-create'),
@@ -66,8 +76,9 @@ urlpatterns = [
     path('item_confirm_delete/<int:pk>/',
          ItemDeleteView.as_view(),
          name='item-confirm-delete'),
+    # endregion
+
     path('search_results/',
          SearchResultsView.as_view(),
          name='search_results'),
 ]
-

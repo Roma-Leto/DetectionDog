@@ -11,10 +11,10 @@
 
 
 {% block content %}
-    Всего {{ object_list.count }} предмета в БД
+    Всего {{ count_objects }} предмета в БД.
     {% for item in object_list %}
         <p>
-            {{ item.id }}
+            id:{{ item.id }}
             <a href="{% url 'inventory:item-details' pk=item.id %}">
                 {% if item.name %}
                     {{ item.name }}
@@ -26,4 +26,27 @@
             </a>
         </p>
     {% endfor %}
+
+{#    <-- Pagination -->             #}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">Начало списка</a>
+            <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+        {% endif %}
+
+        {% for p_item in paginator.page_range %}
+            {% if page_obj.number == p_item %}
+                {{ p_item }}
+            {% elif p_item >= page_obj.number|add:-2 and p_item <= page_obj.number|add:2 %}
+                <a href="?page={{ p_item }}"><b>{{ p_item }}</b></a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+            <a href="?page={{ paginator.page_range.stop|add:-1 }}">Конец списка</a>
+        {% endif %}
+    </div>
+
+
 {% endblock content %}

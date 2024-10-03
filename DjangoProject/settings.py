@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'marathon.apps.MarathonConfig',
     'inventory_items.apps.InventoryItemsConfig',
     'summary_of_the_day.apps.SummaryOfTheDayConfig',
+    'Ytest',
 ]
 
 MIDDLEWARE = [

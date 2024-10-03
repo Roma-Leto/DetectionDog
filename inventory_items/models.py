@@ -17,6 +17,9 @@ class LocationModel(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ["-id"]
+
 
 # endregion
 
@@ -44,26 +47,30 @@ class BoxModel(models.Model):
                               null=True,
                               default=None)
 
-    # MATERIALS_OF_BOX = {
-    #     "carton": "Картон",
-    #     "cellophane": "Целлофан",
-    #     "polyethylene": "Полиэтилен",
-    #     "wood": "Дерево",
-    #     "plastic": "Пластик",
-    #     "stretch_film": "Стрейч плёнка",
-    # }
-
     material = models.ForeignKey("MaterialBoxModel",
                                  verbose_name="Материал",
                                  on_delete=models.SET_NULL,
                                  null=True,
                                  blank=True)
 
+    location = models.ForeignKey(LocationModel,
+                                 verbose_name="Место/локация",
+                                 on_delete=models.PROTECT,
+                                 blank=True,
+                                 null=True)
+
     def get_absolute_url(self):
         return reverse('inventory:box-details', kwargs={'pk': self.id})
 
     def __str__(self):
         return self.number
+
+    class Meta:
+        ordering = ["-id"]
+
+    @classmethod
+    def get_default_box(cls):
+        return BoxModel.objects.first()
 
 
 # endregion
@@ -117,10 +124,11 @@ class ItemModel(models.Model):
     date_create = models.DateTimeField(verbose_name="Время добавления",
                                        auto_now_add=True)
     count = models.IntegerField(verbose_name="Количество/Объём",
-                                blank=True)
+                                blank=True,
+                                default=1)
 
     STATUS_OF_ITEM = {
-        "exist": "Существует",
+        "exist": "В наличии",
         "recycled": "Переработано",
         "thrown": "Выброшено"
     }
@@ -129,22 +137,38 @@ class ItemModel(models.Model):
                               verbose_name="Статус",
                               blank=True,
                               null=False,
-                              choices=STATUS_OF_ITEM)
+                              choices=STATUS_OF_ITEM,
+                              default="exist")
     categories = models.ForeignKey(CategoryModel,
                                    verbose_name="Категория предмета",
-                                   on_delete=models.PROTECT)
-    location = models.ForeignKey(LocationModel,
-                                 verbose_name="Место",
-                                 on_delete=models.PROTECT)
+                                   on_delete=models.PROTECT,
+                                   blank=True,
+                                   null=True)
+
     box = models.ForeignKey(BoxModel,
                             on_delete=models.PROTECT,
                             verbose_name="Упаковка",
                             blank=True,
-                            null=False)
+                            null=True,
+                            default=BoxModel.get_default_box
+                            )
+
+    location = models.ForeignKey(LocationModel,
+                                 verbose_name="Место/локация",
+                                 on_delete=models.PROTECT,
+                                 blank=True,
+                                 null=True)
 
     def get_absolute_url(self):
         return reverse('inventory:item-details', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['-id']
+
+
 # endregion
+
+# NOTE: ctnl +/- | ctrl shift +/-

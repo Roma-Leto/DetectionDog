@@ -39,3 +39,7 @@ div {
 .picture {
         width: 450px;
     }
+
+.pagination {
+    text-align: center;
+}

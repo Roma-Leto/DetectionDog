@@ -42,11 +42,20 @@
             Время добавления: {{ object.date_create }}
         </p>
         <p>
-            Место (локация): {{ object.location }}
+            {% if object.box.location is None %}
+                Место (локация): {{ object.location.name }}
+            {% else %}
+                Место (локация): {{ object.box.location }}
+            {% endif %}
         </p>
         <p>
-            Упаковка: <a href="{% url 'inventory:box-details' pk=object.box.id %}">
-            {{ object.box }}
+            {% if object.box.location is None %}
+                Упаковка: Без упаковки
+            {% else %}
+                Упаковка: <a href="{% url 'inventory:box-details' pk=object.box.id %}">
+                {{ object.box }}
+            {% endif %}
+
             </a>
         </p>
         <p>
