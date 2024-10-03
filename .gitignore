@@ -1,4 +1,9 @@
+/db.sqlite3
 /Ytest/
 *.xml
 *.mp4
 .gitignore
+*.jpg
+**migrations
+.idea
+*.iml
