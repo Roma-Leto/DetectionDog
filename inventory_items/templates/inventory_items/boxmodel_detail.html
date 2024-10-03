@@ -52,7 +52,10 @@
         </p>
         <p>
             {% if object.location.id is not None %}
-            Место (локация): <a href="{% url 'inventory:location-details' pk=object.location.id %}">{{ object.location }}</a>
+            Место (локация):
+                <a href="{% url 'inventory:location-details' pk=object.location.id %}">
+                    {{ object.location }}
+                </a>
             {% endif %}
         </p>
     </div>
@@ -71,6 +74,11 @@
 {#            <a href="#" onclick="history.back();return false;">#}
             <a href="{% url 'inventory:box-create' %}">
                 Добавить ещё упаковку ->
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'inventory:item-create' %}">
+                Добавить предмет --->
             </a>
         </p>
         <p>
