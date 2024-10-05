@@ -15,7 +15,12 @@
         <p style="width: 480px">
             <a href="{% url 'inventory:item-details' pk=item.id %}">
                 <b>{{ item.name }}</b>
-            </a> <br><i>{{ item.details }}</i> --> {{ item.location }}
+            </a> <br><i>{{ item.details }}</i> -->
+            {% if item.location is None %}
+                {{ item.box.location }}
+            {% else %}
+                {{ item.location }}
+            {% endif %}
         </p>
     {% endfor %}
 {% endblock content %}

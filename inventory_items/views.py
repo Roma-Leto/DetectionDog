@@ -180,13 +180,11 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('item')
+        title_query = query.title()
         object_list = ItemModel.objects.filter(
-            Q(name__icontains=query)
-            | Q(details__icontains=query)
-            | Q(name__istartswith=query)
+            Q(details__iregex=query)
+            | Q(name__iregex=query)
         )
-
         return object_list
 
 # endregion
-

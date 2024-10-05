@@ -45,7 +45,7 @@
             {% if object.location != None %}
                 Место (локация): {{ object.location }}
             {% elif object.box != None and object.box.number != "Родная" and object.box.number != "Без упаковки" %}
-                Место (локация): {{ object.box.number }}
+                Место (локация): {{ object.box.location }}
             {% else %}
                 Место (локация): <b>НЕИЗВЕСТНО!</b>
             {% endif %}
