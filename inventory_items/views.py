@@ -14,6 +14,11 @@ pagination_var = 9
 class IndexView(TemplateView):
     template_name = 'inventory_items/index.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['count_obl'] = ItemModel.objects.count()
+        return context
+
 
 class CategoryCreateView(CreateView):
     model = CategoryModel
@@ -140,6 +145,12 @@ class ItemDeleteView(DeleteView):
     success_url = reverse_lazy("inventory:item-list")
 
 
+class BoxDeleteView(DeleteView):
+    model = BoxModel
+    template_name = "inventory_items/box_confirm_delete.html"
+    success_url = reverse_lazy("inventory:box-list")
+
+
 # endregion Delete
 # region Update
 class CategoryUpdateView(UpdateView):
@@ -178,3 +189,4 @@ class SearchResultsView(ListView):
         return object_list
 
 # endregion
+

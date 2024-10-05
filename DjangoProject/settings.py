@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'sandbox3todo',
     'sandbox4ftp',
     'sandbox5blog',
-    'marathon.apps.MarathonConfig',
     'inventory_items.apps.InventoryItemsConfig',
     'summary_of_the_day.apps.SummaryOfTheDayConfig',
     'Ytest',

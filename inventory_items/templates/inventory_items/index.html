@@ -12,8 +12,10 @@
 {#                Поиск#}
 {#            </a>#}
 {#        </p>#}
+
         <form class="text-right" action="{% url 'inventory:search_results' %}" method="get">
-          <input name="item" type="text" placeholder="Поиск...">
+            <b style="font-size: 20px">Найти среди {{ count_obl }} предметов: </b>
+            <input name="item" type="text" placeholder="Поиск...">
         </form>
         <div class="aliceblue">
             <p>

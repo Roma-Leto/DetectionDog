@@ -1,0 +1,22 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block style %}
+
+{% endblock style %}
+
+
+{% block title %}
+    Удаление упаковки
+{% endblock title %}
+
+
+{% block content %}
+    <div style="text-align: center">
+        <form method="post">
+            {% csrf_token %}
+            <p>Действительно хотите удалить {{ object }}?</p>
+            {{ form.as_p }}
+            <input type="submit" value="Да, удалить!" class="del-button">
+        </form>
+    </div>
+{% endblock content %}

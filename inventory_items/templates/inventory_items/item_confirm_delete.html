@@ -15,6 +15,6 @@
         {% csrf_token %}
         <p>Действительно хотите удалить {{ object }}</p>
         {{ form.as_p }}
-        <input type="submit" value="Да, удалить!">
+        <input class="del-button" type="submit" value="Да, удалить!">
     </form>
 {% endblock content %}

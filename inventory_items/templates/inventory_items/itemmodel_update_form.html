@@ -1,7 +1,9 @@
 {% extends 'inventory_items/base.html' %}
 
 {% block style %}
-
+#id_details {
+    max-width: 97%;
+    }
 {% endblock style %}
 
 
@@ -11,7 +13,7 @@
 
 
 {% block content %}
-    <div style="max-width: 100%; overflow: hidden; width: 400px">
+    <div style="max-width: 105%; overflow: hidden; width: 450px">
         <form  method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_ul }}

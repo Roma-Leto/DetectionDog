@@ -15,6 +15,6 @@
         {% csrf_token %}
         <p>Действительно хотите удалить {{ object }}</p>
         {{ form }}
-        <input type="submit" value="Confirm">
+        <input class="del-button" type="submit" value="Confirm">
     </form>
 {% endblock content %}

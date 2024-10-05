@@ -48,6 +48,9 @@ urlpatterns = [
     path('box-detail/<int:pk>/',
          BoxDetailView.as_view(),
          name='box-details'),
+    path('box_confirm_delete/<int:pk>/',
+         BoxDeleteView.as_view(),
+         name='box-confirm-delete'),
     # endregion
     # region material
     path('material-create/',

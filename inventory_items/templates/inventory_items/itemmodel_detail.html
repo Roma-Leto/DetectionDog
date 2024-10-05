@@ -16,7 +16,7 @@
 
 
 {% block content %}
-    <h3 class="h3-log">Добавлен материал упаковки</h3>
+    <h3 class="h3-log">Предмет</h3>
     <div>
         ID: {{ object.id }} - {{ object.name }}
         <br>
@@ -42,15 +42,17 @@
             Время добавления: {{ object.date_create }}
         </p>
         <p>
-            {% if object.box.location is None %}
-                Место (локация): {{ object.location.name }}
+            {% if object.location != None %}
+                Место (локация): {{ object.location }}
+            {% elif object.box != None and object.box.number != "Родная" and object.box.number != "Без упаковки" %}
+                Место (локация): {{ object.box.number }}
             {% else %}
-                Место (локация): {{ object.box.location }}
+                Место (локация): <b>НЕИЗВЕСТНО!</b>
             {% endif %}
         </p>
         <p>
             {% if object.box.location is None %}
-                Упаковка: Без упаковки
+                Упаковка: {{ object.box }}
             {% else %}
                 Упаковка:
                 <a href="{% url 'inventory:box-details' pk=object.box.id %}">
