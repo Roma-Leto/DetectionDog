@@ -15,7 +15,7 @@
     {% for item in object_list %}
         <p>
             id:{{ item.id }}
-            <a href="{% url 'inventory:item-details' pk=item.id %}">
+            <a class="link-btn" href="{% url 'inventory:item-details' pk=item.id %}">
                 {% if item.name %}
                     {{ item.name }}
                 {% elif item.number %}

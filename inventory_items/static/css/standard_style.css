@@ -21,9 +21,9 @@ dialog {
 div {
     font-size: 24px;
 }
-.aliceblue {
-    background-color: aliceblue;
-}
+/*.aliceblue {*/
+/*    background-color: aliceblue;*/
+/*}*/
 
 .text-center{
     text-align: center;
@@ -38,4 +38,27 @@ div {
     height: 7em;
     color: orangered;
     font-size: 24px
+}
+
+.link-btn {
+    display: inline-block; /* Строчно-блочный элемент */
+    background: #8C959D; /* Серый цвет фона */
+    color: #fff; /* Белый цвет текста */
+    padding: 1rem 2rem; /* Поля вокруг текста */
+    text-decoration: none; /* Убираем подчёркивание */
+    border-radius: 3px; /* Скругляем уголки */
+    width: 85%;
+
+}
+.link-btn-plus {
+    margin-bottom: 20px;
+    width: 97%;
+    font-size: 24px
+}
+
+.hr-grey {
+    align-items: center;
+    width: 95%;
+    size: 2px;
+    color: #8C959D;
 }

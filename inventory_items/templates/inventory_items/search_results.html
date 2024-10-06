@@ -13,9 +13,13 @@
 {% block content %}
     {% for item in object_list %}
         <p style="width: 480px">
-            <a href="{% url 'inventory:item-details' pk=item.id %}">
+            <img class="picture" src="../../media/{{ item.photo }}" alt="" width="250">
+            <br>
+            <a class="link-btn" href="{% url 'inventory:item-details' pk=item.id %}">
                 <b>{{ item.name }}</b>
-            </a> <br><i>{{ item.details }}</i> -->
+            </a>
+            <br>
+            <i style="color: dimgray">{{ item.details }}</i> -->
             {% if item.location is None %}
                 {{ item.box.location }}
             {% else %}

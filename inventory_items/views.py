@@ -1,5 +1,4 @@
-from django.db.models import F, Q
-from django.shortcuts import render
+from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView, DetailView, \
     ListView, DeleteView, UpdateView
@@ -180,11 +179,11 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('item')
-        title_query = query.title()
         object_list = ItemModel.objects.filter(
             Q(details__iregex=query)
             | Q(name__iregex=query)
         )
+        print(object_list.values()[0]['photo'])
         return object_list
 
 # endregion

@@ -4,6 +4,11 @@
     InventoryApp
 {% endblock title %}
 
+{% block style %}
+    p {
+        margin: 2px;
+    }
+{% endblock %}
 
 {% block content %}
     <div>
@@ -19,55 +24,59 @@
         </form>
         <div class="aliceblue">
             <p>
-                <a href="{% url 'inventory:item-create' %}">
-                    <b>Добавить предмет</b>
+                <a class="link-btn" href="{% url 'inventory:item-create' %}">
+                    <b>&#128304 Добавить предмет</b>
                 </a>
             </p>
             <p>
-                <a href="{% url 'inventory:item-list' %}">
-                    Список предметов
+                <a class="link-btn" href="{% url 'inventory:item-list' %}">
+                    &#128196 Список предметов
                 </a>
             </p>
         </div>
+        <hr class="hr-grey">
         <p>
-            <a href="{% url 'inventory:category-create' %}">
-                Создание категорий вещей
+            <a class="link-btn" href="{% url 'inventory:category-create' %}">
+                Создание категорий
             </a>
         </p><p>
-            <a href="{% url 'inventory:category-list' %}">
+            <a class="link-btn" href="{% url 'inventory:category-list' %}">
                 Список категорий
             </a>
         </p>
+        <hr class="hr-grey">
         <div class="aliceblue">
         <p>
-            <a href="{% url 'inventory:location-create' %}">
+            <a class="link-btn" href="{% url 'inventory:location-create' %}">
                 Создание мест хранения
             </a>
         </p>
         <p>
-            <a href="{% url 'inventory:location-list' %}">
+            <a class="link-btn" href="{% url 'inventory:location-list' %}">
                 Список мест хранения
             </a>
         </p>
         </div>
+        <hr class="hr-grey">
         <p>
-            <a href="{% url 'inventory:box-create' %}">
-                Создание упаковки хранения
+            <a class="link-btn" href="{% url 'inventory:box-create' %}">
+                Создание упаковки
             </a>
         </p>
         <p>
-            <a href="{% url 'inventory:box-list' %}">
-                Список упаковок для хранения
+            <a class="link-btn" href="{% url 'inventory:box-list' %}">
+                Список упаковок
             </a>
         </p>
+        <hr class="hr-grey">
         <div class="aliceblue">
         <p>
-            <a href="{% url 'inventory:material-create' %}">
+            <a class="link-btn" href="{% url 'inventory:material-create' %}">
                 Создание материала box'a
             </a>
         </p>
         <p>
-            <a href="{% url 'inventory:material-list' %}">
+            <a class="link-btn" href="{% url 'inventory:material-list' %}">
                 Список материалов box'ов
             </a>
         </p>

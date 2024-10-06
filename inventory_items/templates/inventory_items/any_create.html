@@ -9,6 +9,6 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p}}
-        <input type="submit" value="Сохранить">
+        <input class="link-btn" style="margin-bottom: 20px; width: 97%; font-size: 24px" type="submit" value="Сохранить">
     </form>
 {% endblock content %}

@@ -17,7 +17,8 @@
         <form  method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_ul }}
-            <input type="submit" value="Обновить данные">
+            <br>
+            <input class="link-btn" style="margin-bottom: 20px; width: 97%; font-size: 24px" type="submit" value="Обновить данные">
         </form>
     </div>
 
