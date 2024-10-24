@@ -1,0 +1,13 @@
+{% extends 'inventory_items/base.html' %}
+
+{% block content %}
+    stat
+    {{ fi.date_create }}
+    {% for x, y in stat.items %}
+        <p>{{ x }} - {{ y }}</p>
+    {% endfor %}
+    {{ all_count }}
+
+
+
+{% endblock %}

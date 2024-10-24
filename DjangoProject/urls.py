@@ -15,7 +15,6 @@ urlpatterns = [
          ),
     path('admin/', admin.site.urls),
     path('inventory/', include('inventory_items.urls', namespace='inventory')),
-    path('Ytest/', include('Ytest.urls', namespace='Ytest')),
 ] \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\
               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

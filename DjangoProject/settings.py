@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'sandbox5blog',
     'inventory_items.apps.InventoryItemsConfig',
     'summary_of_the_day.apps.SummaryOfTheDayConfig',
-    'Ytest',
 ]
 
 MIDDLEWARE = [

@@ -7,3 +7,5 @@
 **migrations
 .idea
 *.iml
+*/linenv
+/linenv/
