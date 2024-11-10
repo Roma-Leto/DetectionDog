@@ -648,4 +648,4 @@ redefining-builtins-modules=six.moves,past.builtins,future.builtins,builtins,io
 
 [MASTER]
 load-plugins=pylint_django
-django-settings-module=DjangoProject.settings
+django-settings-module=DDog.settings

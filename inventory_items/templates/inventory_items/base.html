@@ -24,11 +24,6 @@
     <div class="child">
         <a class="link-btn text-center" style="margin-bottom: 20px; margin-top: 7px; width: 85%; font-size: 24px" href="{% url 'inventory:index' %}">Главная</a>
         {% block content %}
-            <br>
-            <a href="{% url 'smart_app:sandbox_index' %}">Приложение "SmartPhones"</a>
-            <br>
-            <a href="{% url 'summary_of_the_day:summary_of_the_day_index' %}">Приложение "SummaryOfTheDay"</a>
-            <br>
             <a href="{% url 'inventory:category-create' %}">Приложение "Inventory"</a>
         {% endblock %}
 
